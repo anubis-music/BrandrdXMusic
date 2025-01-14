@@ -4,6 +4,9 @@ from typing import Union
 import random
 import string
 import asyncio
+
+from BrandrdXMusic import app
+
 from pyrogram import client, filters
 from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
 from pytgcalls.exceptions import NoActiveGroupCall
@@ -64,7 +67,8 @@ from BrandrdXMusic.utils.inline import (
 from BrandrdXMusic.utils.pastebin import HottyBin
 from BrandrdXMusic.utils.stream.queue import put_queue, put_queue_index
 from youtubesearchpython.__future__ import VideosSearch
-
+from BrandrdXMusic.utils.thumbnails import get_thumb
+from config import YOUTUBE_IMG_URL
 
 async def stream(
     _,
@@ -128,6 +132,7 @@ async def stream(
                         vidid, mystic, video=status, videoid=True
                     )
                 except:
+
                     await mystic.edit_text(_["play_3"])
                 await Hotty.join_call(
                     chat_id,
@@ -167,7 +172,7 @@ async def stream(
         if count == 0:
             return
         else:
-            link = await brandedBin(msg)
+            link = await HottyBin(msg)
             lines = msg.count("\n")
             if lines >= 17:
                 car = os.linesep.join(msg.split(os.linesep)[:17])
@@ -193,6 +198,7 @@ async def stream(
                 vidid, mystic, videoid=True, video=status
             )
         except:
+
             await mystic.edit_text(_["play_3"])
         if await is_active_chat(chat_id):
             await put_queue(
@@ -474,28 +480,3 @@ async def stream(
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "tg"
             await mystic.delete()
-
-
-# Function to get thumbnail by video ID
-async def get_thumb(videoid):
-    try:
-        # Search for the video using video ID
-        query = f"https://www.youtube.com/watch?v={videoid}"
-        results = VideosSearch(query, limit=1)
-        for result in (await results.next())["result"]:
-            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
-        return thumbnail
-    except Exception as e:
-        return config.YOUTUBE_IMG_URL
-
-
-async def get_thumb(vidid):
-    try:
-        # Search for the video using video ID
-        query = f"https://www.youtube.com/watch?v={vidid}"
-        results = VideosSearch(query, limit=1)
-        for result in (await results.next())["result"]:
-            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
-        return thumbnail
-    except Exception as e:
-        return config.YOUTUBE_IMG_URL

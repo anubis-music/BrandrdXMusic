@@ -68,7 +68,7 @@ def stream_markup_timer(_, vidid, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text=" ᴏᴡɴᴇʀ ", url=f"https://t.me/myqueenmedusa"
+                text=" ᴏᴡɴᴇʀ ", url=f"https://t.me/myqueenmedusaofficial"
             ),
             InlineKeyboardButton(
                 text=" ᴄʜᴀᴛ ", url=f"https://t.me/seriousvs_version10"
@@ -90,7 +90,7 @@ def stream_markup(_, videoid, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text=" ᴏᴡɴᴇʀ ", url=f"https://t.me/myqueenmedusa"
+                text=" ᴏᴡɴᴇʀ ", url=f"https://t.me/myqueenmedusaofficial"
             ),
             InlineKeyboardButton(
                 text=" ᴄʜᴀᴛ ", url=f"https://t.me/seriousvs_version10"

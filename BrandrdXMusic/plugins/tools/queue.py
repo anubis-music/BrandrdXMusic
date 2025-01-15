@@ -12,14 +12,12 @@ from BrandrdXMusic.utils import HottyBin, get_channeplayCB, seconds_to_min
 from BrandrdXMusic.utils.database import get_cmode, is_active_chat, is_music_playing
 from BrandrdXMusic.utils.decorators.language import language, languageCB
 from BrandrdXMusic.utils.inline import queue_back_markup, queue_markup
-from BrandrdXMusic.utils.thumbnails import get_thumb
-from config import YOUTUBE_IMG_URL
 from config import BANNED_USERS
 
 basic = {}
 
 
-def get_thumb(vidid):
+def get_image(videoid):
     if os.path.isfile(f"cache/{videoid}.png"):
         return f"cache/{videoid}.png"
     else:
